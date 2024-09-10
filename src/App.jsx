@@ -18,7 +18,7 @@ function App() {
       }
 
       const updateTurns = [
-        {square: {row: rowIndex,col: colIndex},player: activePlayer},
+        {square: {row: rowIndex,col: colIndex},player: currentPlayer},
         ...prevTurns,
       ];
       return updateTurns;
@@ -37,7 +37,7 @@ function App() {
       />
     </div>
 
-    <Log />
+    <Log turns={gameTurns} />
   </main>;
 }
 
