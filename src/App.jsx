@@ -35,7 +35,7 @@ function App() {
       gameBoard[row][col] = player;
   }
 
-  let winner;
+  let winner; 
   // 勝者を判定する部分
   for(const combination of WINNING_COMBINATIONS){
     const firstSquareSymbol = 
@@ -51,6 +51,8 @@ function App() {
       winner = firstSquareSymbol;
     };
   };
+
+  const hasDraw = gameTurns.length === 9 && !winner; // winnerとhasDrawはbolean
 
 
   function handleSelectSquare(rowIndex,colIndex){
@@ -72,7 +74,7 @@ function App() {
         <Player initialName='player1' symbol='X' isActive={activePlayer==='X'} />
         <Player initialName='player2' symbol='O' isActive={activePlayer==='O'} />
       </ol>
-      {winner && <GameOver winner={winner} />}
+      {(winner || hasDraw) && <GameOver winner={winner } />}
       <GameBoard onSelectSquare={handleSelectSquare} 
       board={gameBoard}
       />
